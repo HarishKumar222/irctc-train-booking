@@ -67,7 +67,7 @@ public class AuthController {
             return "redirect:/login"; // or show error
         }
 
-        model.addAttribute("user", user);  // ✅ Add user to the model
+        model.addAttribute("user", user);
         return "user/dashboard";
     }
 
