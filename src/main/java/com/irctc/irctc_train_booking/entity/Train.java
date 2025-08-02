@@ -16,6 +16,9 @@ public class Train {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "fare")
+    private Double fare;
+
 
     private String trainName;
 

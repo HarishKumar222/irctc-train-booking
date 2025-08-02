@@ -16,6 +16,9 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private boolean cancelled;
+    @Column(name = "total_fare")
+    private Integer totalFare;
 
     private LocalDate bookingDate;
 

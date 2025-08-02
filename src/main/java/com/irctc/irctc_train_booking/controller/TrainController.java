@@ -68,6 +68,7 @@ public class TrainController {
         if (user == null) {
             return "redirect:/";
         }
+
         model.addAttribute("trains", trainService.getAllTrains());
         return "train_list";
     }

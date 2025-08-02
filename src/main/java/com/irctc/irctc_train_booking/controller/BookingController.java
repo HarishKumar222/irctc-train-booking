@@ -62,19 +62,17 @@ public class BookingController {
         User user = (User) session.getAttribute("user");
         if (user == null) return "redirect:/";
         model.addAttribute("bookings", bookingService.getBookingsByUser(user));
-        return "user_bookings";
-    }
-    @GetMapping("/booking/user/history")
-    public String getUserBookings(Model model, HttpSession session) {
-        User user = (User) session.getAttribute("user");
-        List<Booking> bookings = bookingService.getBookingsByUser(user);
-        model.addAttribute("bookings", bookings);
-        return "booking/booking_history";
+        return "booking_history";
     }
 
-    @GetMapping("/booking/user/cancel/{id}")
+    @GetMapping("/user/cancel/{id}")
     public String cancelBooking(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
         User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("error", "Please login to cancel bookings.");
+            return "redirect:/";
+        }
 
         Optional<Booking> bookingOpt = bookingService.getBookingById(id);
         if (bookingOpt.isPresent()) {
@@ -93,8 +91,6 @@ public class BookingController {
         return "redirect:/booking/user/history";
     }
 
-
-
     @GetMapping("/admin/all")
     public String viewAllBookings(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
@@ -105,4 +101,5 @@ public class BookingController {
         return "admin_bookings";
     }
 }
+
 

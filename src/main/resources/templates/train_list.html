@@ -24,6 +24,9 @@
         <td th:text="${train.destination}"></td>
         <td th:text="${train.totalSeats}"></td>
         <td th:text="${train.travelDate}"></td>
+        <td th:text="'₹' + ${train.fare}">Fare</td>
+
+
         <td>
             <a th:href="@{'/booking/book/' + ${train.id}}" class="btn btn-sm btn-success">Book</a>
         </td>
