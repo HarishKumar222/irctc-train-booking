@@ -39,5 +39,5 @@ A simple full-stack **Train Booking System** that simulates core functionalities
 
 1. **Clone the Repo**
    ```bash
-   git clone https://github.com/YOUR-USERNAME/irctc-train-booking.git
+   git clone https://github.com/HarishKumar222/irctc-train-booking.git
    cd irctc-train-booking
