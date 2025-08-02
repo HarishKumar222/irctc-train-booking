@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking History</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">My Booking History</h2>
+
+    <!-- Success / Error messages -->
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Passenger Name</th>
+            <th>Train Name</th>
+            <th>Booking Date</th>
+            <th>Seats</th>
+            <th>Total Fare</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="booking : ${bookings}">
+            <td th:text="${booking.user.name}">Passenger Name</td>
+            <td th:text="${booking.train.trainName}">Train Name</td>
+            <td th:text="${booking.bookingDate}">Booking Date</td>
+            <td th:text="${booking.seatsBooked}">Seats</td>
+            <td th:text="${booking.totalFare}">Total Fare</td>
+            <td>
+                <a th:href="@{/booking/user/cancel/{id}(id=${booking.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('Are you sure you want to cancel this booking?');">
+                    Cancel
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+
+
